@@ -202,16 +202,48 @@ def main():
 
     # Analyze portfolio
     results = analyze_portfolio(portfolio)
-    print(results)
-    # Export to Excel
+    # print(results) # returns a list
+
+    df_results = pd.DataFrame(results)
+    df_results["PL_Sort"] = df_results["Profit/Loss"].apply(
+        lambda x: x if x != "N/A" else -999999
+    )
+    df_results = df_results.sort_values("PL_Sort", ascending=False).drop(
+        "PL_Sort", axis=1
+    )
+    # Calculate totals for columns from 'Purchase Price' to 'Return %'
+    totals_row = {
+        "Ticker": "TOTALS",
+        "Shares": round(df_results[df_results["Shares"] != "N/A"]["Shares"].sum(), 2),
+        "Purchase Price": "N/A",
+        "Current Price": "N/A",
+        "Initial Value": round(
+            df_results[df_results["Initial Value"] != "N/A"]["Initial Value"].sum(), 2
+        ),
+        "Current Value": round(
+            df_results[df_results["Current Value"] != "N/A"]["Current Value"].sum(), 2
+        ),
+        "Profit/Loss": round(
+            df_results[df_results["Profit/Loss"] != "N/A"]["Profit/Loss"].sum(), 2
+        ),
+        "Return %": round(
+            df_results[df_results["Return %"] != "N/A"]["Return %"].sum(), 2
+        ),
+    }
+
+    df_totals = pd.DataFrame([totals_row])
+    df_results_with_totals = pd.concat([df_results, df_totals], ignore_index=True)
+    df_results_with_totals.head(12)
+
+    # # Export to Excel
     # filename, df = export_to_excel(results)
 
-    # Display summary
-    print("\n" + "=" * 60)
-    print("PORTFOLIO SUMMARY")
-    print("=" * 60)
+    # # Display summary
+    # print("\n" + "=" * 60)
+    # print("PORTFOLIO SUMMARY")
+    # print("=" * 60)
     # print(df.to_string(index=False))
-    print("=" * 60)
+    # print("=" * 60)
 
 
 if __name__ == "__main__":
