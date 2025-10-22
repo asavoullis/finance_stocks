@@ -188,12 +188,13 @@ def main():
         {"ticker": "SMCI", "shares": 11, "purchase_price": 46.28},
         {"ticker": "UNH", "shares": 4, "purchase_price": 319.76},
         {"ticker": "V", "shares": 4, "purchase_price": 343.19},
-        {"ticker": "VUSA.L", "shares": 5, "purchase_price": 84.69},
+        {"ticker": "VUAG.L", "shares": 112, "purchase_price": 87.4},  #
+        {"ticker": "VUSA.L", "shares": 115, "purchase_price": 84.69},
         {"ticker": "ZIM", "shares": 15, "purchase_price": 17.63},
         {"ticker": "AMPY", "shares": 72, "purchase_price": 6.23},
         {"ticker": "UNH", "shares": 3, "purchase_price": 300.33},
-        {"ticker": "VUAG.L", "shares": 2, "purchase_price": 87.37},
-        {"ticker": "VUSA.L", "shares": 2, "purchase_price": 83.97},
+        {"ticker": "VUAG.L", "shares": 112, "purchase_price": 87.37},  #
+        {"ticker": "VUSA.L", "shares": 112, "purchase_price": 83.97},
         # {'ticker': 'AAPL', 'shares': 10, 'purchase_price': 150.00},
         # {'ticker': 'MSFT', 'shares': 5, 'purchase_price': 300.00},
         # {'ticker': 'GOOGL', 'shares': 8, 'purchase_price': 120.00},
